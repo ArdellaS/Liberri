@@ -49,5 +49,21 @@ namespace Hello
             string[] userArray = userList.ToArray();
             System.IO.File.WriteAllLines(@"../../../users.txt", userArray);
         }
+
+        public static void AddBook(List<Book> bookList, List<Book> checkedInBooks)
+        {
+            Welcome.ResetPage();
+            var donatedBook = new Book();
+            GetSearchResults.WriteCyanToConsole("Please enter the name of the book you're donating: ");
+            donatedBook.Title = Console.ReadLine();
+            GetSearchResults.WriteCyanToConsole("Please enter the author of the book you're donating: ");
+            donatedBook.Author = Console.ReadLine();
+            donatedBook.Status = "in";
+            bookList.Add(donatedBook);
+            checkedInBooks.Add(donatedBook);
+            Console.WriteLine("\nThank you for your donation!");
+            GetSearchResults.WriteCyanToConsole("\nPress any key to continue");
+            Console.ReadKey();
+        }
     }
 }
